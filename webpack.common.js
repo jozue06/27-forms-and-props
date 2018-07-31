@@ -9,7 +9,7 @@ const production = process.env.NODE_ENV === 'production'; // evals to a Boolean 
 
 const webpackConfig = module.exports = {};
 
-webpackConfig.entry = `${__dirname}/src/main.js`;
+webpackConfig.entry = `${__dirname}/src/app.js`;
 
 webpackConfig.output = {
   filename: '[name].[hash].js',
