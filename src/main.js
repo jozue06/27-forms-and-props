@@ -42,8 +42,9 @@ class App extends React.Component {
   }
 
   handleSubmit(query) {
-    this.setState({ query });
-    let url = `https://www.reddit.com/r/${query}.json`;
+    console.log(query);
+    // this.setState({ query:subreddit });
+    let url = `https://www.reddit.com/r/${query.subreddit}.json?limit=${query.limit}`;
     fetch(url).
     then((res) => {
       this.state.error = '';
