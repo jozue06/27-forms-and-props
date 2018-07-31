@@ -56,7 +56,7 @@ then((json) => {
       this.setState({
         results: json.data.children.map((item) => <li key={item.data.id}>
             <Reddit.Link href={item.data.url}>
-              {item.data.title}
+              {item.data.title} <br />  ^^ups: {item.data.ups} <br />
             </Reddit.Link>
           </li>)
       });
