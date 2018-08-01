@@ -12,7 +12,7 @@ class Header extends React.Component {
     render() {
       return (
         <Head>
-          Generate Cowsay Lorem NOW!
+          Generate Cowsay Lorem and Search for Subreddits!
         </Head>
       );
     }

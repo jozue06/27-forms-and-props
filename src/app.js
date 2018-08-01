@@ -11,6 +11,7 @@ import fetch from 'node-fetch';
 import SearchForm from './components/searchForm.js';
 import SearchResults from './components/SearchResults.js';
 import Reddit from './components/styledReddit.js';
+import NoResults from './components/noResults';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,16 +48,15 @@ class App extends React.Component {
     then((res) => {
       this.state.error = '';
       console.log('ress -->', res);
-      
 
     return res.json();
 
     }).
 then((json) => {
 
-  console.log('stufffsfss -->', json.data.children);
+  // console.log('stufffsfss -->', json.data.children);
 
-  return (json.data.children.length === 0 ? this.setState({ results: <li>error, no subreddit by that name, please search again</li> }) : this.setState({
+  return (json.data.children.length === 0 ? this.setState({ results: <NoResults /> }) : this.setState({
         results: json.data.children.map((item) => <li key={item.data.id}>
             <Reddit.Link href={item.data.url}>
               {item.data.title} <br />
@@ -69,12 +69,12 @@ then((json) => {
         );
     }).
     catch((err) => {
-      console.log(err);
+      console.log('the fetch err??', err);
     });
   }
 
 
-  render() {
+  render() {  
     const opts = {
     };
     opts[this.state.cowSelect] = true;
