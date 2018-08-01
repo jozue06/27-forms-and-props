@@ -15,12 +15,9 @@ class SearchForm extends React.Component {
   }
 
   handleChange(ev) {
-    console.log('change targetvalue', ev.target.value);
-    console.log('names', ev.target.name);
     const name = ev.target.name;
     const value = ev.target.value;
     this.setState({ [name]: value });
-    console.log('the statesasas -->', this.state);
   }
 
   handleSubmit(ev) {

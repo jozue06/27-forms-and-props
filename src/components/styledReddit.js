@@ -24,6 +24,10 @@ const Wrapper = styled.section`
   background: papayawhip;
 `;
 
+const Ups = styled.p`
+font-size: .5em;
+`;
+
 const Button = styled.button`
   /* Adapt the colours based on primary prop */
   background: ${(props) => props.primary ? 'palevioletred' : 'white'};
@@ -43,4 +47,5 @@ export default {
     Wrapper,
     Text,
     Link,
+    Ups,
 };

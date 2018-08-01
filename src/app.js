@@ -42,28 +42,34 @@ class App extends React.Component {
   }
 
   handleSubmit(query) {
-    console.log(query);
-    // this.setState({ query:subreddit });
-    let url = `https://www.reddit.com/r/${query.subreddit}.json?limit=${query.limit}`;
+    const url = `https://www.reddit.com/r/${query.subreddit}.json?limit=${query.limit}`;
     fetch(url).
     then((res) => {
       this.state.error = '';
+      console.log('ress -->', res);
+      
 
-return res.json();
+    return res.json();
+
     }).
 then((json) => {
 
-      this.setState({
+  console.log('stufffsfss -->', json.data.children);
+
+  return (json.data.children.length === 0 ? this.setState({ results: <li>error, no subreddit by that name, please search again</li> }) : this.setState({
         results: json.data.children.map((item) => <li key={item.data.id}>
             <Reddit.Link href={item.data.url}>
-              {item.data.title} <br />  ^^ups: {item.data.ups} <br />
+              {item.data.title} <br />
             </Reddit.Link>
+            <Reddit.Ups>
+             Reddit Up Votes: {item.data.ups}
+              </Reddit.Ups>
           </li>)
-      });
+      })
+        );
     }).
     catch((err) => {
       console.log(err);
-      this.setState({ error: 'error', results: [] });
     });
   }
 
